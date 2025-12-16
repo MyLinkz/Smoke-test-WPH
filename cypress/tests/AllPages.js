@@ -48,13 +48,18 @@ const FOOTER_SERVICES = [
 //Footer
 const FOOTER_COMPANY = [
     "/about",
-    "/samples",
     "/prices-and-discounts",
     "/testimonials",
     "/blog",
     "/legal",
     "/contacts",
     "/write-for-us",
+];
+
+//Samples
+const HEADER_SAMPLES = [
+    "/samples",
+    "/ib-writing-service#sample",
 ];
 
 //Policies
@@ -90,7 +95,20 @@ describe("Smoke Test – All Pages (Refactored)", () => {
     it("Header - How to order", () => {
         clickAndVerify('[title="How to order"]', "/#howtoorder");
     });
+    it("Header - Samples pages", () => {
+        HEADER_SAMPLES.forEach((path) => {
+            cy.waitForDropdownOpen(
+                `a.dropdown-menu__menu-item[href="${path}"]`,
+                60000
+            );
+            cy.get(`a.dropdown-menu__menu-item[href="${path}"]`)
+                .should("be.visible")
+                .click();
 
+            cy.url().should("include", path);
+            scrollBottom();
+        });
+    });
     it("Header - Pricing", () => {
         clickAndVerify('[title="Pricing"]', "/prices-and-discounts");
     });
@@ -106,7 +124,6 @@ describe("Smoke Test – All Pages (Refactored)", () => {
                 `a.dropdown-menu__menu-item[href="${path}"]`,
                 60000
             );
-
             cy.get(`a.dropdown-menu__menu-item[href="${path}"]`)
                 .should("be.visible")
                 .click();
