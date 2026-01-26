@@ -24,11 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add("visitWithAuth", (path) => {
-  cy.visit(`https://writersperhour.dev${path}`, {
-    auth: {
-      username: "kamora",
-      password: "12racoons",
-    },
+  cy.visit(`https://writersperhour.com${path}`, {
+    // auth: {
+    //   username: "kamora",
+    //   password: "12racoons",
+    // },
   });
 });
 
@@ -46,6 +46,21 @@ Cypress.Commands.add("logout", () => {
     .click({ force: true });
 
   cy.url().should('include', '#signin');
+});
+Cypress.Commands.add("settings", () => {
+  cy.get('button.avatar-user__btn').click();
+
+  cy.get('.dropdown-content', { timeout: 10000 }).then($el => {
+    if ($el.css('display') === 'none') {
+      cy.wait(500);
+      cy.get('button.avatar-user__btn').click({ force: true });
+    }
+  });
+
+  cy.contains('.dropdown-content button', 'Settings', { timeout: 10000 })
+    .click({ force: true });
+
+  cy.url().should('include', '/settings');
 });
 Cypress.Commands.add("waitForDropdownOpen", (selector, timeout = 30000) => {
   cy.get(selector, { timeout }).should("be.visible");

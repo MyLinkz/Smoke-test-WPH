@@ -14,69 +14,32 @@ const visitAndScroll = (path = "/") => {
 };
 //Services dropdown
 const HEADER_SERVICES = [
-    "/research-paper-writing-service",
-    "/thesis-writing-service",
-    "/write-my-discussion-post-for-me",
-    "/article-review-writing-service",
-    "/do-my-powerpoint",
-    "/case-study-writing-service",
-    "/report-writing-service",
-    "/buy-coursework-online",
-    "/write-my-speech",
-    "/pay-for-essay",
-    "/paper-editing-service",
+    "/buy-a-tok-essay",
+    "/buy-ib-ia",
+    
 ];
 
 //Services
-const FOOTER_SERVICES = [
-    "/paper-editing-service",
-    "/write-my-speech",
-    "/write-my-literature-review",
-    "/do-my-capstone-project",
-    "/do-my-homework",
-    "/buy-college-papers",
-    "/buy-research-proposal",
-    "/do-my-coursework",
-    "/reaction-paper",
-    "/research-paper-writing-service",
-    "/buy-personal-statement",
-    "/do-my-powerpoint",
-    "/report-writing-service",
-    "/article-review-writing-service",
+const HEADER_COMPANY = [
+    "/about",
+    "/#testimonials",
 ];
 
 //Footer
 const FOOTER_COMPANY = [
-    "/about",
-    "/prices-and-discounts",
-    "/testimonials",
-    "/blog",
-    "/legal",
+    "/samples",
     "/contacts",
-    "/write-for-us",
+    "/about",
+    "#testimonials",
 ];
 
-//Samples
-const HEADER_SAMPLES = [
-    "/samples",
-    "/ib-writing-service#sample",
-];
 
 //Policies
 const FOOTER_POLICIES = [
-    "/legal/terms",
-    "/legal/privacy",
-    "/legal/refund",
-    "/legal/cookie",
+    "/money-back",
+    "/revision",
+    "/terms",
     "/delete",
-];
-
-// Direct URL pages
-const DIRECT_PAGES = [
-    "/ib-writing-service",
-    "/ib-writing-service/ia-writing-service",
-    "/ib-writing-service/tok-writing-service",
-    "/ib-writing-service/tok-writing-service/titles",
 ];
 
 describe("Smoke Test – All Pages (Refactored)", () => {
@@ -88,12 +51,12 @@ describe("Smoke Test – All Pages (Refactored)", () => {
 
     //HOMEPAGE
     it("Homepage loads successfully", () => {
-        cy.url().should("eq", "https://writersperhour.dev/");
+        cy.url().should("eq", "https://ibhelper.com/");
     });
 
     //HEADER
     it("Header - How to order", () => {
-        clickAndVerify('[title="How to order"]', "/#howtoorder");
+        clickAndVerify('[title="Writers"]', "/#our-writers");
     });
     it("Header - Samples pages", () => {
         HEADER_SAMPLES.forEach((path) => {

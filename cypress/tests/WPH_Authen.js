@@ -53,12 +53,12 @@ describe("Smoke test Authentication", () => {
 
     cy.get('.remember-wrapper > :nth-child(2)').click();
     cy.get('.sc-f3ce7e5b-0 > .text-field').type(email);
-    cy.get('.sc-3fd007a0-0 > .sc-a54f95ef-0').click();
+    cy.get('.sc-673abc9f-0 > .sc-a54f95ef-0').click();
 
     cy.pause(); 
 
     cy.get('.sc-f3ce7e5b-0 > .text-field').type(newPassword);
-    cy.get('.sc-3fd007a0-0 > .sc-a54f95ef-0').click();
+    cy.get('.sc-673abc9f-0 > .sc-a54f95ef-0').click();
 
     cy.get(selectors.submitBtn).should('be.visible');
 
