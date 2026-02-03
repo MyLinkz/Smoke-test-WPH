@@ -24,11 +24,11 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 Cypress.Commands.add("visitWithAuth", (path) => {
-  cy.visit(`https://writersperhour.com${path}`, {
-    // auth: {
-    //   username: "kamora",
-    //   password: "12racoons",
-    // },
+  cy.visit(`https://writersperhour.dev${path}`, {
+    auth: {
+      username: "kamora",
+      password: "12racoons",
+    },
   });
 });
 

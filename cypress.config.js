@@ -8,7 +8,7 @@ module.exports = defineConfig({
     specPattern: "./cypress/tests/**.*",
     baseUrl: "https://the-internet.herokuapp.com",
 
-    // 👉 Thêm dòng này để toàn bộ click, type... không tự scroll
+  
     scrollBehavior: false,
   },
 
