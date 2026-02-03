@@ -1,5 +1,5 @@
 const email = "linh.tran@kamora.vn";
-const password = "Password@123";
+const password = "Password!123";
 const newPassword = "Password@123";
 
 const selectors = {
@@ -72,7 +72,7 @@ describe("Smoke Test Settings ", () => {
         loginNew(email, newPassword);
 
     });
-    
+
  //DELETE FROM SETTINGS
   it("Should allow deletion from settings", () => {
     cy.visitWithAuth("/#signin");

@@ -91,7 +91,7 @@ describe("Smoke Test – All Pages (Refactored)", () => {
 
     //HOMEPAGE
     it("Homepage loads successfully", () => {
-        cy.url().should("eq", "https://writersperhour.dev/");
+        cy.url().should("eq", "https://writersperhour.com/");
     });
 
     //HEADER

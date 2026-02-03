@@ -1,5 +1,5 @@
 const email = "linh.tran@kamora.vn";
-const password = "Password123!";
+const password = "Password!123";
 const newPassword = "Password@123";
 
 const selectors = {
