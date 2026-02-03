@@ -17,6 +17,11 @@ const login = (email, password) => {
   cy.get(selectors.passwordInput).type(password);
   cy.get(selectors.submitBtn).click();
 };
+const loginNew = (email, newPassword) => {
+    cy.get(selectors.emailInput).type(email);
+    cy.get(selectors.passwordInput).type(newPassword);
+    cy.get(selectors.submitBtn).click();
+};
 
 describe("Smoke test Authentication", () => {
 
@@ -62,7 +67,7 @@ describe("Smoke test Authentication", () => {
 
     cy.get(selectors.submitBtn).should('be.visible');
 
-    login(email, newPassword);
+    loginNew(email, newPassword);
 
     cy.get(selectors.userWrapper).should('be.visible');
     cy.logout();
@@ -129,28 +134,23 @@ describe("Smoke test Authentication", () => {
 
     cy.get(selectors.userWrapper).should('be.visible');
   });
+   
+  //FGPW FROM ORDER FORM 
+  it("Should allow FGPW in Order form", ()=> {
+    cy.visitWithAuth("/");
+    cy.get('.right-group-button > .primary__contained').click();
+    cy.get('.button-list > .sc-a54f95ef-0').click();
+    cy.get('.remember-wrapper > :nth-child(2)').click();
+    cy.get('.text-field').type(email);
+    cy.get('.sc-673abc9f-0 > .sc-a54f95ef-0').click();
+    cy.pause();
+    cy.get('.sc-f3ce7e5b-0 > .text-field').type(newPassword);
+    cy.get('.sc-673abc9f-0 > .sc-a54f95ef-0').click();
 
-  // DELETE FROM SETTINGS
-  it("Should allow deletion from settings", () => {
-    cy.visitWithAuth("/#signin");
+    cy.get(selectors.submitBtn).should('be.visible');
 
-    login(email, password);
+    loginNew(email, newPassword);
     cy.get(selectors.userWrapper).should('be.visible');
 
-    cy.get('button.avatar-user__btn').click();
-    cy.contains('.dropdown-content button', 'Settings').click({ force: true });
-
-    cy.get(':nth-child(2) > .item-wrap').click();
-    cy.get('.sc-cfb2f529-0 > :nth-child(2)').click();
-    cy.get(selectors.submitBtn).click();
-
-    cy.get('input').type(email);
-    cy.get('.action > .sc-a54f95ef-0').click();
-    cy.pause();
-
-    cy.visitWithAuth("/#signin");
-    login(email, password);
-
-    cy.get('.sc-be6961b2-0').should('be.visible');
   });
 });

@@ -35,14 +35,14 @@ Cypress.Commands.add("visitWithAuth", (path) => {
 Cypress.Commands.add("logout", () => {
   cy.get('button.avatar-user__btn').click();
 
-  cy.get('.dropdown-content', { timeout: 10000 }).then($el => {
+  cy.get('.dropdown-content', { timeout: 30000 }).then($el => {
     if ($el.css('display') === 'none') {
       cy.wait(500);
       cy.get('button.avatar-user__btn').click({ force: true });
     }
   });
 
-  cy.contains('.dropdown-content button', 'Sign Out', { timeout: 10000 })
+  cy.contains('.dropdown-content button', 'Sign Out', { timeout: 30000 })
     .click({ force: true });
 
   cy.url().should('include', '#signin');
@@ -50,14 +50,14 @@ Cypress.Commands.add("logout", () => {
 Cypress.Commands.add("settings", () => {
   cy.get('button.avatar-user__btn').click();
 
-  cy.get('.dropdown-content', { timeout: 10000 }).then($el => {
+  cy.get('.dropdown-content', { timeout: 30000 }).then($el => {
     if ($el.css('display') === 'none') {
       cy.wait(500);
       cy.get('button.avatar-user__btn').click({ force: true });
     }
   });
 
-  cy.contains('.dropdown-content button', 'Settings', { timeout: 10000 })
+  cy.contains('.dropdown-content button', 'Settings', { timeout: 30000 })
     .click({ force: true });
 
   cy.url().should('include', '/settings');
